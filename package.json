@@ -1,0 +1,34 @@
+{
+  "name": "apollo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "graphql": "^0.9.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.3",
+    "eslint-plugin-graphql": "^0.7.0",
+    "graphql-server-express": "^0.7.2",
+    "graphql-subscriptions": "^0.3.1",
+    "graphql-tools": "^0.11.0",
+    "http": "^0.0.0",
+    "react-apollo": "^1.1.0",
+    "react-scripts": "0.9.5",
+    "subscriptions-transport-ws": "^0.5.5"
+  },
+  "scripts": {
+    "start-client": "react-scripts start",
+    "start-server": "babel-node ./server/index.js",
+    "build": "react-scripts build",
+    "update-schema": "babel-node ./scripts/updateSchema.js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
