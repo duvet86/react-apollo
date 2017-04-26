@@ -1,41 +1,27 @@
+import "bootstrap/dist/css/bootstrap.css";
 import "./css/index.css";
 
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  ApolloProvider,
-  ApolloClient,
-  createNetworkInterface
-} from "react-apollo";
-import {
-  SubscriptionClient,
-  addGraphQLSubscriptions
-} from "subscriptions-transport-ws";
+import { ApolloProvider } from "react-apollo";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import apolloClient from "./graphQLClient/apolloClient";
 
 import App from "./components/App";
-
-const wsClient = new SubscriptionClient("ws://localhost:8081/subscriptions", {
-  reconnect: true
-});
-
-const networkInterface = createNetworkInterface({
-  uri: "http://localhost:8080/graphql"
-});
-
-// Extend the network interface with the WebSocket
-const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
-  networkInterface,
-  wsClient
-);
-
-// Finally, create your ApolloClient instance with the modified network interface
-const client = new ApolloClient({
-  networkInterface: networkInterfaceWithSubscriptions
-});
+import Home from "./components/Home";
+import ChannelsList from "./components/ChannelsList";
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
+  <ApolloProvider client={apolloClient}>
+    <BrowserRouter>
+      <App>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/channelList" component={ChannelsList} />
+        </Switch>
+      </App>
+    </BrowserRouter>
   </ApolloProvider>,
   document.getElementById("root")
 );
