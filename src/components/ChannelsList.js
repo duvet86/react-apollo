@@ -19,8 +19,10 @@ class ChannelsList extends Component {
     return (
       <div>
         <AddChannel />
-        <ul>
-          {data.channels.map(ch => <li key={ch.id}>{ch.name}</li>)}
+        <ul className="list-group">
+          {data.channels.map(ch => (
+            <li className="list-group-item" key={ch.id}>{ch.name}</li>
+          ))}
         </ul>
       </div>
     );

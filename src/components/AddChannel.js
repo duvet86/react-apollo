@@ -13,7 +13,20 @@ const AddChannel = ({ mutate }) => {
     }
   };
 
-  return <input type="text" placeholder="New channel" onKeyUp={handleKeyUp} />;
+  return (
+    <div className="form-inline" style={{ "margin-bottom": 15 }}>
+      <div className="form-group">
+        <label for="newChannel">New Channel</label>
+        <input
+          id="newChannel"
+          type="text"
+          className="form-control mx-sm-3"
+          placeholder="New channel"
+          onKeyUp={handleKeyUp}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default graphql(
