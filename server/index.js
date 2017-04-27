@@ -1,4 +1,5 @@
 import express from "express";
+import jwt from "express-jwt";
 import cors from "cors";
 import bodyParser from "body-parser";
 import { graphqlExpress, graphiqlExpress } from "graphql-server-express";
@@ -10,10 +11,22 @@ import schema from "./data/schema";
 const WEBSOCKET_SERVER_PORT = 8081;
 const GRAPHQL_PORT = 8080;
 
+const helperMiddleware = [
+  bodyParser.json(),
+  jwt({ secret: "secret", credentialsRequired: false })
+];
+
 const graphQLServer = express();
 graphQLServer.use(cors());
 
-graphQLServer.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
+graphQLServer.use(
+  "/graphql",
+  ...helperMiddleware,
+  graphqlExpress(request => ({
+    schema: schema,
+    context: { user: request.user }
+  }))
+);
 graphQLServer.use(
   "/graphiql",
   graphiqlExpress({
