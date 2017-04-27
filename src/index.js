@@ -9,8 +9,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import apolloClient from "./graphQLClient/apolloClient";
 
 import App from "./components/App";
-import Home from "./components/Home";
-import ChannelsList from "./components/ChannelsList";
+import Home from "./components/presentationals/Home";
+import ChannelsListContainer from "./components/containers/ChannelsListContainer";
 
 ReactDOM.render(
   <ApolloProvider client={apolloClient}>
@@ -18,7 +18,7 @@ ReactDOM.render(
       <App>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/channelList" component={ChannelsList} />
+          <Route path="/channelList" component={ChannelsListContainer} />
         </Switch>
       </App>
     </BrowserRouter>

@@ -1,7 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { gql, graphql } from "react-apollo";
 
-const AddChannel = ({ mutate }) => {
+import AddChannel from "../presentationals/AddChannel";
+
+const AddChannelContainer = ({ mutate }) => {
   const handleKeyUp = evt => {
     if (evt.keyCode === 13) {
       evt.persist();
@@ -14,19 +17,12 @@ const AddChannel = ({ mutate }) => {
   };
 
   return (
-    <div className="form-inline" style={{ "margin-bottom": 15 }}>
-      <div className="form-group">
-        <label for="newChannel">New Channel</label>
-        <input
-          id="newChannel"
-          type="text"
-          className="form-control mx-sm-3"
-          placeholder="New channel"
-          onKeyUp={handleKeyUp}
-        />
-      </div>
-    </div>
+    <AddChannel handleKeyUp={handleKeyUp} />
   );
+};
+
+AddChannelContainer.propTypes = {
+  mutate: PropTypes.func.isRequired
 };
 
 export default graphql(
@@ -38,4 +34,4 @@ export default graphql(
       }
     }
   `
-)(AddChannel);
+)(AddChannelContainer);

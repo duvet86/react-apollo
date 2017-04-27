@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { gql, graphql } from "react-apollo";
 
-import AddChannel from "./AddChannel";
+import AddChannelContainer from "./AddChannelContainer";
+import ChannelsList from "../presentationals/ChannelsList";
 
-class ChannelsList extends Component {
+class ChannelsListContainer extends Component {
   componentDidMount() {
     this.props.subscribeToNewChannels();
   }
@@ -18,16 +20,20 @@ class ChannelsList extends Component {
     }
     return (
       <div>
-        <AddChannel />
-        <ul className="list-group">
-          {data.channels.map(ch => (
-            <li className="list-group-item" key={ch.id}>{ch.name}</li>
-          ))}
-        </ul>
+        <AddChannelContainer />
+        <ChannelsList channels={data.channels} />
       </div>
     );
   }
 }
+
+ChannelsList.propTypes = {
+  data: PropTypes.shape({
+    loading: PropTypes.bool,
+    error: PropTypes.string,
+    channels: PropTypes.array
+  })
+};
 
 export const channelsListQuery = gql`
    query ChannelsListQuery {
@@ -69,4 +75,4 @@ const makeQuery = graphql(channelsListQuery, {
   }
 });
 
-export default makeQuery(ChannelsList);
+export default makeQuery(ChannelsListContainer);
