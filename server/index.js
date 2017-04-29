@@ -22,11 +22,15 @@ graphQLServer.use(cors());
 graphQLServer.use(
   "/graphql",
   ...helperMiddleware,
-  graphqlExpress(request => ({
-    schema: schema,
-    context: { user: request.user }
-  }))
+  graphqlExpress(request => {
+    console.log(request.user);
+    return {
+      schema: schema,
+      context: { user: request.user }
+    };
+  })
 );
+
 graphQLServer.use(
   "/graphiql",
   graphiqlExpress({

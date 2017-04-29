@@ -7,6 +7,12 @@ const typeDefs = `
     name: String
   }
 
+  type User {
+    email: String!
+    password: String!
+    jwtToken: String
+  }
+
   type Query {
     channels: [Channel]
   }
@@ -14,6 +20,7 @@ const typeDefs = `
   type Mutation {
     addChannel(name: String!): Channel
     removeChannel(id: ID!): String
+    login(email: String! password: String!): User
   }
 
   type Subscription {

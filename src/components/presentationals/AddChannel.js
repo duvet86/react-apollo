@@ -1,20 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Form, FormGroup, ControlLabel, FormControl } from "react-bootstrap";
 
 const AddChannel = ({ handleKeyUp }) => {
   return (
-    <div className="form-inline add-channel-form">
-      <div className="form-group">
-        <label htmlFor="newChannel">New Channel</label>
-        <input
-          id="newChannel"
+    <Form
+      inline
+      onSubmit={evt => {
+        evt.preventDefault();
+      }}
+    >
+      <FormGroup controlId="formInlineName">
+        <ControlLabel>New Channel</ControlLabel>
+        <FormControl
           type="text"
-          className="form-control mx-sm-3"
           placeholder="New channel"
           onKeyUp={handleKeyUp}
         />
-      </div>
-    </div>
+      </FormGroup>
+    </Form>
   );
 };
 

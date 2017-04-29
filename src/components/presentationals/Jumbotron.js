@@ -1,24 +1,18 @@
 import React from "react";
 import logo from "../../logo.svg";
+import { Grid, Jumbotron, Image } from "react-bootstrap";
 
-const Jumbotron = () => (
-      <div className="jumbotron">
-      <div className="container">
-        <div className="media">
-          <img
-            src={logo}
-            className="app-logo d-flex align-self-center mr-3"
-            alt="logo"
-          />
-          <div className="media-body">
-            <h1 className="display-3">Welcome to React App</h1>
-            <p>
-              This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+const customJumbotron = () => (
+  <Jumbotron>
+    <Grid>
+      <Image src={logo} className="app-logo" />
+      <h1>Hello, world!</h1>
+      <p>
+        This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+      </p>
+      <p />
+    </Grid>
+  </Jumbotron>
 );
 
-export default Jumbotron;
+export default customJumbotron;

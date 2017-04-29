@@ -4,6 +4,7 @@ import { gql, graphql } from "react-apollo";
 
 import AddChannelContainer from "./AddChannelContainer";
 import ChannelsList from "../presentationals/ChannelsList";
+import Loading from "../presentationals/Loading";
 
 class ChannelsListContainer extends Component {
   componentDidMount() {
@@ -12,17 +13,13 @@ class ChannelsListContainer extends Component {
 
   render() {
     const { data } = this.props;
-    if (data.loading) {
-      return <p>Loading ...</p>;
-    }
-    if (data.error) {
-      return <p>{data.error.message}</p>;
-    }
     return (
-      <div>
-        <AddChannelContainer />
-        <ChannelsList channels={data.channels} />
-      </div>
+      <Loading loading={data.loading} error={data.error}>
+        <div>
+          <AddChannelContainer />
+          <ChannelsList channels={data.channels} />
+        </div>
+      </Loading>
     );
   }
 }

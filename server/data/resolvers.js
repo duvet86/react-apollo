@@ -1,33 +1,5 @@
 import { pubsub } from "./subscriptionManager";
-
-class Channel {
-  constructor(id, name) {
-    this.id = id;
-    this.name = name;
-  }
-}
-
-const channelsById = {
-  0: new Channel(0, "Luca"),
-  1: new Channel(1, "Pippo")
-};
-
-let nextId = 2;
-
-function getChannels() {
-  return Object.keys(channelsById).map(id => channelsById[id]);
-}
-
-function addChannel(name) {
-  const channel = new Channel(nextId++, name);
-  channelsById[channel.id] = channel;
-
-  return channel;
-}
-
-function removeChannel(id) {
-  delete channelsById[id];
-}
+import { login, getChannels, addChannel, removeChannel } from "./database";
 
 export default {
   Query: {
@@ -36,6 +8,9 @@ export default {
     }
   },
   Mutation: {
+    login(root, { email, password }, context, info) {
+      return login(email, password);
+    },
     addChannel(root, { name }, context, info) {
       var channel = addChannel(name);
       pubsub.publish("channelAdded", channel);

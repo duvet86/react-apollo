@@ -12,6 +12,21 @@ const networkInterface = createNetworkInterface({
   uri: "http://localhost:8080/graphql"
 });
 
+networkInterface.use([
+  {
+    applyMiddleware(req, next) {
+      if (!req.options.headers) {
+        req.options.headers = {}; // Create the header object if needed.
+      }
+
+      // get the authentication token from local storage if it exists
+      const token = localStorage.getItem("jwt_token");
+      req.options.headers.authorization = token ? `Bearer ${token}` : null;
+      next();
+    }
+  }
+]);
+
 // Extend the network interface with the WebSocket
 const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(
   networkInterface,

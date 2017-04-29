@@ -4,24 +4,29 @@ import "./css/index.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import { ApolloProvider } from "react-apollo";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router } from "react-router";
+import { Route, Switch } from "react-router-dom";
 
-import apolloClient from "./graphQLClient/apolloClient";
+import browserHistory from "./lib/browserHistory";
+import apolloClient from "./lib/apolloClient";
 
 import App from "./components/App";
 import Home from "./components/presentationals/Home";
-import ChannelsListContainer from "./components/containers/ChannelsListContainer";
+import LoginContainer from "./components/containers/LoginContainer";
+import ChannelsListContainer
+  from "./components/containers/ChannelsListContainer";
 
 ReactDOM.render(
   <ApolloProvider client={apolloClient}>
-    <BrowserRouter>
-      <App>
-        <Switch>
+    <Router history={browserHistory}>
+      <Switch>
+        <Route exact path="/login" component={LoginContainer} />
+        <App>
           <Route exact path="/" component={Home} />
           <Route path="/channelList" component={ChannelsListContainer} />
-        </Switch>
-      </App>
-    </BrowserRouter>
+        </App>
+      </Switch>
+    </Router>
   </ApolloProvider>,
   document.getElementById("root")
 );

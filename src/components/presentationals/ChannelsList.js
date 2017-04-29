@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
 
 const ChannelsList = ({ channels }) => (
-  <ul className="list-group">
-    {channels.map(ch => (
-      <li className="list-group-item" key={ch.id}>{ch.name}</li>
-    ))}
-  </ul>
+  <ListGroup>
+    {channels.map(ch => <ListGroupItem key={ch.id}>{ch.name}</ListGroupItem>)}
+  </ListGroup>
 );
 
 ChannelsList.propTypes = {

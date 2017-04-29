@@ -1,29 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 const NavBar = () => (
-  <nav className="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-    <button
-      className="navbar-toggler navbar-toggler-right"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarsExampleDefault"
-      aria-controls="navbarsExampleDefault"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span className="navbar-toggler-icon" />
-    </button>
-    <Link className="navbar-brand" to="/">Home</Link>
-
-    <div className="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <Link className="nav-link" to="/channelList">List of Channels</Link>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <Navbar fixedTop bsStyle="inverse">
+    <Navbar.Header>
+      <Navbar.Brand>
+        <Link className="navbar-brand" to="/">Home</Link>
+      </Navbar.Brand>
+    </Navbar.Header>
+    <Nav>
+      <LinkContainer to="/channelList">
+        <NavItem eventKey={2}>List of Channels</NavItem>
+      </LinkContainer>
+    </Nav>
+  </Navbar>
 );
 
 export default NavBar;
