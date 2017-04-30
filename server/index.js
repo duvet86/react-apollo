@@ -13,22 +13,23 @@ const GRAPHQL_PORT = 8080;
 
 const helperMiddleware = [
   bodyParser.json(),
-  jwt({ secret: "secret", credentialsRequired: false })
+  jwt({ secret: "secret" }).unless(req => {
+    const { operationName } = req.body;
+    return operationName === "login";
+  })
 ];
 
 const graphQLServer = express();
+
 graphQLServer.use(cors());
 
 graphQLServer.use(
   "/graphql",
   ...helperMiddleware,
-  graphqlExpress(request => {
-    console.log(request.user);
-    return {
-      schema: schema,
-      context: { user: request.user }
-    };
-  })
+  graphqlExpress(request => ({
+    schema: schema,
+    context: { user: request.user }
+  }))
 );
 
 graphQLServer.use(

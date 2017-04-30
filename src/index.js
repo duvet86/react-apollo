@@ -5,10 +5,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { ApolloProvider } from "react-apollo";
 import { Router } from "react-router";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 
 import browserHistory from "./lib/browserHistory";
 import apolloClient from "./lib/apolloClient";
+import { AuthenticatedRoute, CustomRoute } from "./components/routes";
 
 import App from "./components/App";
 import Home from "./components/presentationals/Home";
@@ -20,10 +21,10 @@ ReactDOM.render(
   <ApolloProvider client={apolloClient}>
     <Router history={browserHistory}>
       <Switch>
-        <Route exact path="/login" component={LoginContainer} />
+        <CustomRoute exact path="/login" component={LoginContainer} />
         <App>
-          <Route exact path="/" component={Home} />
-          <Route path="/channelList" component={ChannelsListContainer} />
+          <AuthenticatedRoute exact path="/" component={Home} />
+          <AuthenticatedRoute path="/channelList" component={ChannelsListContainer} />
         </App>
       </Switch>
     </Router>
