@@ -4,12 +4,14 @@ import {
   addGraphQLSubscriptions
 } from "subscriptions-transport-ws";
 
-const wsClient = new SubscriptionClient("ws://localhost:8081/subscriptions", {
+import { GRAPHQL_URL, WEBSOCKET_URL } from "lib/constants";
+
+const wsClient = new SubscriptionClient(WEBSOCKET_URL, {
   reconnect: true
 });
 
 const networkInterface = createNetworkInterface({
-  uri: "http://localhost:8080/graphql"
+  uri: GRAPHQL_URL
 });
 
 networkInterface.use([

@@ -17,6 +17,7 @@
         "graphql"
     ],
     "rules": {
+        "no-var": "error",
         "semi": [
             "error",
             "always"

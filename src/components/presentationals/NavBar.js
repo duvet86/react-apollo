@@ -1,20 +1,44 @@
+import logo from "logo.svg";
+
 import React from "react";
 import { Link } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import {
+  Nav,
+  Navbar,
+  NavItem,
+  FormGroup,
+  FormControl,
+  Button,
+  Image
+} from "react-bootstrap";
+
+import LogoutContainer from "components/containers/LogoutContainer";
 
 const NavBar = () => (
-  <Navbar fixedTop bsStyle="inverse">
+  <Navbar fluid fixedTop bsStyle="inverse">
     <Navbar.Header>
       <Navbar.Brand>
-        <Link className="navbar-brand" to="/">Home</Link>
+        <Link className="navbar-brand" to="/">
+          <Image src={logo} className="app-logo" responsive />
+        </Link>
       </Navbar.Brand>
+      <Navbar.Toggle />
     </Navbar.Header>
-    <Nav>
-      <LinkContainer to="/channelList">
-        <NavItem eventKey={2}>List of Channels</NavItem>
-      </LinkContainer>
-    </Nav>
+    <Navbar.Collapse>
+      <Navbar.Form pullLeft>
+        <FormGroup>
+          <FormControl type="text" placeholder="Search" />
+        </FormGroup>
+        {" "}
+        <Button type="submit">Submit</Button>
+      </Navbar.Form>
+      <LogoutContainer />
+      <Nav pullRight>
+        <NavItem eventKey={1} href="#">Settings</NavItem>
+        <NavItem eventKey={2} href="#">Profile</NavItem>
+        <NavItem eventKey={3} href="#">Help</NavItem>
+      </Nav>
+    </Navbar.Collapse>
   </Navbar>
 );
 

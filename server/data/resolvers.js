@@ -1,31 +1,40 @@
-import { pubsub } from "./subscriptionManager";
-import { login, getChannels, addChannel, removeChannel } from "./database";
+import {
+  login,
+  logout,
+  getChannels,
+  addChannel,
+  removeChannel
+} from "./database";
+
+const checkAuthenticatedUser = ({ user }, cb) => {
+  if (user) {
+    return cb();
+  }
+};
 
 export default {
   Query: {
     channels(root, args, context, info) {
-      return getChannels();
+      return checkAuthenticatedUser(context, () => getChannels());
     }
   },
   Mutation: {
     login(root, { email, password }, context, info) {
       return login(email, password);
     },
+    logout(root, { jwtToken }, context, info) {
+      return checkAuthenticatedUser(context, () => logout(jwtToken));
+    },
     addChannel(root, { name }, context, info) {
-      var channel = addChannel(name);
-      pubsub.publish("channelAdded", channel);
-
-      return channel;
+      return checkAuthenticatedUser(context, () => addChannel(name));
     },
     removeChannel(root, { id }, context, info) {
-      removeChannel(id);
-
-      return "Success";
+      return checkAuthenticatedUser(context, () => removeChannel(id));
     }
   },
   Subscription: {
     channelAdded(newChannel, args, context, info) {
-      return newChannel;
+      checkAuthenticatedUser(context, () => newChannel);
     }
   }
 };

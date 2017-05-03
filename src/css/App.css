@@ -1,3 +1,11 @@
+.navbar-fixed-top {
+  border: 0;
+}
+
+.navbar-brand {
+  padding: 0;
+}
+
 .jumbotron {
   margin-bottom: 30px;
   color: inherit;
@@ -47,7 +55,7 @@
 
 .app-logo {
   animation: app-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 50px;
 }
 
 @keyframes app-logo-spin {

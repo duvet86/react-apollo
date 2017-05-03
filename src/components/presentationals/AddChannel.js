@@ -1,22 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Form, FormGroup, ControlLabel, FormControl } from "react-bootstrap";
+import {
+  Col,
+  Form,
+  FormGroup,
+  ControlLabel,
+  FormControl
+} from "react-bootstrap";
 
 const AddChannel = ({ handleKeyUp }) => {
   return (
     <Form
-      inline
+      horizontal
       onSubmit={evt => {
         evt.preventDefault();
       }}
     >
-      <FormGroup controlId="formInlineName">
-        <ControlLabel>New Channel</ControlLabel>
-        <FormControl
-          type="text"
-          placeholder="New channel"
-          onKeyUp={handleKeyUp}
-        />
+      <FormGroup>
+        <Col componentClass={ControlLabel} md={2}>
+          Add New Channel
+        </Col>
+        <Col md={10}>
+          <FormControl
+            type="text"
+            placeholder="New channel"
+            onKeyUp={handleKeyUp}
+          />
+        </Col>
       </FormGroup>
     </Form>
   );

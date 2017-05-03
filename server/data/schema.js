@@ -2,12 +2,23 @@ import { makeExecutableSchema } from "graphql-tools";
 import resolvers from "./resolvers";
 
 const typeDefs = `
+  enum STATUS {
+    OK
+    FAIL
+  }
+
+  type Result {
+    status: STATUS!
+    message: String
+  }
+
   type Channel {
     id: ID!
     name: String
   }
 
   type User {
+    id: ID!
     email: String!
     password: String!
     jwtToken: String
@@ -15,12 +26,14 @@ const typeDefs = `
 
   type Query {
     channels: [Channel]
+    getJwtToken: String
   }
 
   type Mutation {
     addChannel(name: String!): Channel
-    removeChannel(id: ID!): String
+    removeChannel(id: ID!): Result
     login(email: String! password: String!): User
+    logout(jwtToken: String!): Result
   }
 
   type Subscription {

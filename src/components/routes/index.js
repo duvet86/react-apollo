@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-import { isUserAuthenticated } from "../../lib/authAPI";
+import { isUserAuthenticated } from "lib/authAPI";
 
 const AuthenticatedRoute = ({ component, ...props }) => (
   <Route

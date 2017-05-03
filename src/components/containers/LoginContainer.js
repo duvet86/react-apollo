@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { gql, graphql } from "react-apollo";
 
-import browserHistory from "../../lib/browserHistory";
-import Login from "../presentationals/Login";
+import browserHistory from "lib/browserHistory";
+import Login from "components/presentationals/Login";
 
 class LoginContainer extends Component {
   constructor(props) {
@@ -50,8 +50,7 @@ class LoginContainer extends Component {
           password
         }
       })
-      .then(({data}) => {
-        console.log(data.login);
+      .then(({ data }) => {
         localStorage.setItem("jwt_token", data.login.jwtToken);
         browserHistory.push("/");
       });

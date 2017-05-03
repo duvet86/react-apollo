@@ -1,10 +1,10 @@
-import "../css/App.css";
+import "css/App.css";
 
 import React from "react";
 import PropTypes from "prop-types";
 import { Grid } from "react-bootstrap";
-import NavBar from "./presentationals/NavBar";
-import Jumbotron from "./presentationals/Jumbotron";
+import NavBar from "components/presentationals/NavBar";
+import Jumbotron from "components/presentationals/Jumbotron";
 
 const App = ({ children }) => (
   <div>
