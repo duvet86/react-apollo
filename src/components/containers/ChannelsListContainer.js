@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { gql, graphql } from "react-apollo";
 
 import AddChannelContainer from "components/containers/AddChannelContainer";
+
 import ChannelsList from "components/presentationals/ChannelsList";
 import Loading from "components/presentationals/Loading";
 

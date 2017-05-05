@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button } from "react-bootstrap";
+import { Button, FormGroup, Checkbox } from "react-bootstrap";
 
 import FieldGroup from "components/presentationals/FieldGroup";
 
@@ -16,11 +16,12 @@ const Login = ({
   <form className="form-signin" onSubmit={handleSubmit}>
     <h2 className="form-signin-heading">Please sign in</h2>
     <FieldGroup
+      formGroupClassName="field-group-email"
       id="formControlsEmail"
       type="email"
-      label="Email address"
+      label="Email"
       srOnly
-      placeholder="Enter email"
+      placeholder="Email"
       validationState={getEmailValidationState()}
       value={emailValue}
       onChange={handleEmailChange}
@@ -35,6 +36,9 @@ const Login = ({
       value={passwordValue}
       onChange={handlePasswordChange}
     />
+    <FormGroup>
+      <Checkbox>Remember me</Checkbox>
+    </FormGroup>
     <Button bsStyle="primary" bsSize="large" block type="submit">
       Submit
     </Button>

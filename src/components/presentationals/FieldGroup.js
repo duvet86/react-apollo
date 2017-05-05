@@ -16,14 +16,19 @@ const FieldGroup = ({
   value,
   type,
   placeholder,
-  onChange
+  onChange,
+  formGroupClassName
 }) => (
-  <FormGroup controlId={id} validationState={validationState}>
+  <FormGroup
+    controlId={id}
+    validationState={validationState}
+    className={formGroupClassName}
+  >
     <ControlLabel srOnly={srOnly}>{label}</ControlLabel>
     <FormControl
       type={type}
       value={value}
-      placeholder="Enter text"
+      placeholder={placeholder}
       onChange={onChange}
     />
     {help && <HelpBlock>{help}</HelpBlock>}
@@ -39,7 +44,8 @@ FieldGroup.propTypes = {
   type: PropTypes.oneOf(["text", "number", "email", "password"]).isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  formGroupClassName: PropTypes.string
 };
 
 export default FieldGroup;

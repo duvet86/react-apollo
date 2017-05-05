@@ -8,14 +8,13 @@ import {
   NavItem,
   FormGroup,
   FormControl,
-  Button,
   Image
 } from "react-bootstrap";
 
 import LogoutContainer from "components/containers/LogoutContainer";
 
 const NavBar = () => (
-  <Navbar fluid fixedTop bsStyle="inverse">
+  <Navbar fluid fixedTop>
     <Navbar.Header>
       <Navbar.Brand>
         <Link className="navbar-brand" to="/">
@@ -29,8 +28,6 @@ const NavBar = () => (
         <FormGroup>
           <FormControl type="text" placeholder="Search" />
         </FormGroup>
-        {" "}
-        <Button type="submit">Submit</Button>
       </Navbar.Form>
       <LogoutContainer />
       <Nav pullRight>

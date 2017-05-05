@@ -1,3 +1,5 @@
+import "css/login.css";
+
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { gql, graphql } from "react-apollo";
@@ -12,6 +14,32 @@ class LoginContainer extends Component {
       email: "",
       password: ""
     };
+  }
+
+  componentWillMount() {
+    document.body.style.paddingTop = "40px";
+    document.body.style.paddingBottom = "40px";
+    document.body.style.backgroundColor = "#eee";
+  }
+
+  componentWillUnmount() {
+    document.body.style.paddingTop = null;
+    document.body.style.paddingBottom = null;
+    document.body.style.backgroundColor = null;
+  }
+
+  render() {
+    return (
+      <Login
+        handleSubmit={this.handleSubmit}
+        getEmailValidationState={this.getEmailValidationState}
+        getPasswordValidationState={this.getPasswordValidationState}
+        handleEmailChange={this.handleEmailChange}
+        handlePasswordChange={this.handlePasswordChange}
+        emailValue={this.state.email}
+        passwordValue={this.state.password}
+      />
+    );
   }
 
   getEmailValidationState = () => {
@@ -55,20 +83,6 @@ class LoginContainer extends Component {
         browserHistory.push("/");
       });
   };
-
-  render() {
-    return (
-      <Login
-        handleSubmit={this.handleSubmit}
-        getEmailValidationState={this.getEmailValidationState}
-        getPasswordValidationState={this.getPasswordValidationState}
-        handleEmailChange={this.handleEmailChange}
-        handlePasswordChange={this.handlePasswordChange}
-        emailValue={this.state.email}
-        passwordValue={this.state.password}
-      />
-    );
-  }
 }
 
 LoginContainer.propTypes = {

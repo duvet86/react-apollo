@@ -5,7 +5,7 @@ import { Navbar, Button } from "react-bootstrap";
 const Logout = ({ handleClick }) => {
   return (
     <Navbar.Form pullRight>
-      <Button onClick={handleClick} bsStyle="warning">Logout</Button>
+      <Button onClick={handleClick}>Logout</Button>
     </Navbar.Form>
   );
 };
