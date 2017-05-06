@@ -15,6 +15,8 @@ import App from "components/App";
 
 import LoginContainer from "components/containers/LoginContainer";
 import ChannelsListContainer from "components/containers/ChannelsListContainer";
+import SortableContainer from "components/containers/SortableContainer";
+import PageBuilderContainer from "components/containers/PageBuilderContainer";
 
 import DashBoard from "components/presentationals/DashBoard";
 
@@ -25,6 +27,8 @@ ReactDOM.render(
         <CustomRoute exact path="/login" component={LoginContainer} />
         <App>
           <AuthenticatedRoute exact path="/" component={DashBoard} />
+          <AuthenticatedRoute exact path="/sortable" component={SortableContainer} />
+          <AuthenticatedRoute exact path="/pagebuilder" component={PageBuilderContainer} />
           <AuthenticatedRoute
             path="/channelList"
             component={ChannelsListContainer}

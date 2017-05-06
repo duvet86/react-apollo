@@ -1,12 +1,19 @@
 import React from "react";
 import { Col, Nav, NavItem } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 const SideBar = () => (
   <Col sm={3} md={2} className="sidebar">
-    <Nav className="nav-sidebar" activeKey={2}>
-      <NavItem eventKey={1}>NavItem 1 content</NavItem>
-      <NavItem eventKey={2}>NavItem 2 content</NavItem>
-      <NavItem eventKey={3}>NavItem 3 content</NavItem>
+    <Nav className="nav-sidebar">
+      <LinkContainer exact to="/">
+        <NavItem>DashBoard</NavItem>
+      </LinkContainer>
+      <LinkContainer exact to="/sortable">
+        <NavItem>Sortable List</NavItem>
+      </LinkContainer>
+      <LinkContainer exact to="/pagebuilder">
+        <NavItem>Page Builder</NavItem>
+      </LinkContainer>
     </Nav>
   </Col>
 );
