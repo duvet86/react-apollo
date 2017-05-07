@@ -34,7 +34,8 @@ export default {
   },
   Subscription: {
     channelAdded(newChannel, args, context, info) {
-      checkAuthenticatedUser(context, () => newChannel);
+      // TODO: add auth
+      return newChannel;
     }
   }
 };

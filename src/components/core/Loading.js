@@ -4,12 +4,12 @@ import { Well } from "react-bootstrap";
 
 const Loading = ({ children, loading, error }) => {
   if (loading) {
-    return <Well>Loading</Well>;
+    return <div id="loader" />;
   }
   if (error) {
     return <Well>{error.message}</Well>;
   }
-  return children;
+  return <div className="animate-bottom">{children}</div>;
 };
 
 Loading.propTypes = {
