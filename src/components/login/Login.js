@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, FormGroup, Checkbox } from "react-bootstrap";
 
-import FieldGroup from "components/presentationals/FieldGroup";
+import FieldGroup from "components/core/FieldGroup";
 
 const Login = ({
   handleSubmit,

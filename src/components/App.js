@@ -3,8 +3,9 @@ import "css/app.css";
 import React from "react";
 import PropTypes from "prop-types";
 import { Grid, Row, Col } from "react-bootstrap";
-import NavBar from "components/presentationals/NavBar";
-import SideBar from "components/presentationals/SideBar";
+
+import NavBar from "components/navigation/NavBar";
+import SideBar from "components/navigation/SideBar";
 
 const App = ({ children }) => (
   <div>

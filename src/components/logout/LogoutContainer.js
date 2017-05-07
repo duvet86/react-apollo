@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { gql, graphql } from "react-apollo";
 
 import browserHistory from "lib/browserHistory";
-import Logout from "components/presentationals/Logout";
+import Logout from "components/logout/Logout";
 
 const LogoutContainer = ({ mutate }) => {
   const handleLogout = () => {

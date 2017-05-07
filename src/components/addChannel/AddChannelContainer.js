@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { gql, graphql } from "react-apollo";
 
-import AddChannel from "components/presentationals/AddChannel";
+import AddChannel from "components/addChannel/AddChannel";
 
 const AddChannelContainer = ({ mutate }) => {
   const handleKeyUp = evt => {

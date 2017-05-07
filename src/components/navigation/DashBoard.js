@@ -1,8 +1,8 @@
 import React from "react";
 import { Row, Col, Table } from "react-bootstrap";
 
-import SimpleLineChart from "components/presentationals/SimpleLineChart";
-import SpecifiedDomainRadarChart from "components/presentationals/SpecifiedDomainRadarChart";
+import SimpleLineChart from "components/charting/SimpleLineChart";
+import SpecifiedDomainRadarChart from "components/charting/SpecifiedDomainRadarChart";
 
 const DashBoard = () => (
   <div>

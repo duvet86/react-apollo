@@ -1,36 +1,55 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import DashBoard from "components/navigation/DashBoard";
+import ChannelsListContainer
+  from "components/channelList/ChannelsListContainer";
+import PageBuilderContainer from "components/pageBuilder/PageBuilderContainer";
+import Settings from "components/navigation/Settings";
+import Profile from "components/navigation/Profile";
+import Help from "components/navigation/Help";
 
-import { isUserAuthenticated } from "lib/authAPI";
+const routes = [
+  {
+    id: 1,
+    path: "/",
+    label: "Dashboard",
+    component: DashBoard,
+    isSideBar: true
+  },
+  {
+    id: 2,
+    path: "/channellist",
+    label: "Channel List",
+    component: ChannelsListContainer,
+    isSideBar: true
+  },
+  {
+    id: 3,
+    path: "/pageBuilder",
+    label: "Page Builder",
+    component: PageBuilderContainer,
+    isSideBar: true
+  },
+  {
+    id: 4,
+    path: "/settings",
+    label: "Settings",
+    component: Settings
+  },
+  {
+    id: 5,
+    path: "/profile",
+    label: "Profile",
+    component: Profile
+  },
+  {
+    id: 6,
+    path: "/help",
+    label: "Help",
+    component: Help
+  }
+];
 
-const AuthenticatedRoute = ({ component, ...props }) => (
-  <Route
-    {...props}
-    render={props =>
-      (isUserAuthenticated()
-        ? React.createElement(component, props)
-        : <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: props.location }
-            }}
-          />)}
-  />
-);
+const topBarRoutes = routes.filter(route => !route.isSideBar);
+const sideBarRoutes = routes.filter(route => route.isSideBar);
 
-const CustomRoute = ({ component, ...props }) => (
-  <Route
-    {...props}
-    render={props =>
-      (!isUserAuthenticated()
-        ? React.createElement(component, props)
-        : <Redirect
-            to={{
-              pathname: "/",
-              state: { from: props.location }
-            }}
-          />)}
-  />
-);
-
-export { AuthenticatedRoute, CustomRoute };
+export { topBarRoutes, sideBarRoutes };
+export default routes;

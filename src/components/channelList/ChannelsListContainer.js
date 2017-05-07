@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { gql, graphql } from "react-apollo";
 
-import AddChannelContainer from "components/containers/AddChannelContainer";
-
-import ChannelsList from "components/presentationals/ChannelsList";
-import Loading from "components/presentationals/Loading";
+import Loading from "components/core/Loading";
+import AddChannelContainer from "components/addChannel/AddChannelContainer";
+import ChannelsList from "components/channelList/ChannelsList";
 
 class ChannelsListContainer extends Component {
   componentDidMount() {

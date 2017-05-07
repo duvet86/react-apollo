@@ -10,15 +10,14 @@ import { Switch } from "react-router-dom";
 import browserHistory from "lib/browserHistory";
 import apolloClient from "lib/apolloClient";
 
-import { AuthenticatedRoute, CustomRoute } from "components/routes";
+import routes from "components/routes";
+import {
+  AuthenticatedRoute,
+  CustomRoute
+} from "components/routes/CustomRoutes";
 import App from "components/App";
 
-import LoginContainer from "components/containers/LoginContainer";
-import ChannelsListContainer from "components/containers/ChannelsListContainer";
-import SortableContainer from "components/containers/SortableContainer";
-import PageBuilderContainer from "components/containers/PageBuilderContainer";
-
-import DashBoard from "components/presentationals/DashBoard";
+import LoginContainer from "components/login/LoginContainer";
 
 ReactDOM.render(
   <ApolloProvider client={apolloClient}>
@@ -26,13 +25,14 @@ ReactDOM.render(
       <Switch>
         <CustomRoute exact path="/login" component={LoginContainer} />
         <App>
-          <AuthenticatedRoute exact path="/" component={DashBoard} />
-          <AuthenticatedRoute exact path="/sortable" component={SortableContainer} />
-          <AuthenticatedRoute exact path="/pagebuilder" component={PageBuilderContainer} />
-          <AuthenticatedRoute
-            path="/channelList"
-            component={ChannelsListContainer}
-          />
+          {routes.map(({ id, path, component }) => (
+            <AuthenticatedRoute
+              key={id}
+              exact
+              path={path}
+              component={component}
+            />
+          ))}
         </App>
       </Switch>
     </Router>

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { gql, graphql } from "react-apollo";
 
 import browserHistory from "lib/browserHistory";
-import Login from "components/presentationals/Login";
+import Login from "components/login/Login";
 
 class LoginContainer extends Component {
   constructor(props) {

@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { DragSource } from "react-dnd";
 
-import ItemTypes from "components/presentationals/ItemTypes";
+import ItemTypes from "components/pageBuilder/ItemTypes";
 
 const style = {
-  border: "1px dashed gray",
+  border: "1px solid gray",
   padding: "0.5rem 1rem",
   marginBottom: ".5rem",
   backgroundColor: "white",
@@ -47,7 +47,7 @@ PBComponent.propTypes = {
 };
 
 export default DragSource(
-  ItemTypes.CARD,
+  ItemTypes.COMPONENT,
   componentSource,
   (connect, monitor) => ({
     connectDragSource: connect.dragSource(),

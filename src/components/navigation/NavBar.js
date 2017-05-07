@@ -2,16 +2,12 @@ import logo from "logo.svg";
 
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Nav,
-  Navbar,
-  NavItem,
-  FormGroup,
-  FormControl,
-  Image
-} from "react-bootstrap";
+import { Nav, Navbar, FormGroup, FormControl, Image } from "react-bootstrap";
 
-import LogoutContainer from "components/containers/LogoutContainer";
+import { topBarRoutes } from "components/routes";
+import NavItemLink from "components/core/NavItemLink";
+
+import LogoutContainer from "components/logout/LogoutContainer";
 
 const NavBar = () => (
   <Navbar fluid fixedTop>
@@ -31,9 +27,9 @@ const NavBar = () => (
       </Navbar.Form>
       <LogoutContainer />
       <Nav pullRight>
-        <NavItem eventKey={1} href="#">Settings</NavItem>
-        <NavItem eventKey={2} href="#">Profile</NavItem>
-        <NavItem eventKey={3} href="#">Help</NavItem>
+        {topBarRoutes.map(({ id, path, label }) => (
+          <NavItemLink key={id} exact path={path} label={label} />
+        ))}
       </Nav>
     </Navbar.Collapse>
   </Navbar>

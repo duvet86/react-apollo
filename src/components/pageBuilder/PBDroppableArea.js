@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { DropTarget } from "react-dnd";
 
-import ItemTypes from "components/presentationals/ItemTypes";
+import ItemTypes from "components/pageBuilder/ItemTypes";
 
 const style = {
-  color: "white",
+  border: "1px dashed gray",
   padding: "1rem",
   textAlign: "center"
 };
@@ -19,7 +19,7 @@ const boxTarget = {
 const PBDroppableArea = ({ canDrop, isOver, connectDropTarget }) => {
   const isActive = canDrop && isOver;
 
-  let backgroundColor = "#222";
+  let backgroundColor;
   if (isActive) {
     backgroundColor = "darkgreen";
   } else if (canDrop) {
@@ -28,7 +28,7 @@ const PBDroppableArea = ({ canDrop, isOver, connectDropTarget }) => {
 
   return connectDropTarget(
     <div style={{ ...style, backgroundColor }}>
-      {isActive ? "Release to drop" : "Drag a card here"}
+      {isActive ? "Release to drop" : "Drag a Component here"}
     </div>
   );
 };
@@ -39,7 +39,7 @@ PBDroppableArea.propTypes = {
   canDrop: PropTypes.bool.isRequired
 };
 
-export default DropTarget(ItemTypes.CARD, boxTarget, (connect, monitor) => ({
+export default DropTarget(ItemTypes.COMPONENT, boxTarget, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
   canDrop: monitor.canDrop()
