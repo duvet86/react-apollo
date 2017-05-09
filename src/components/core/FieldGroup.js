@@ -31,7 +31,11 @@ const FieldGroup = ({
       placeholder={placeholder}
       onChange={onChange}
     />
-    {help && <HelpBlock>{help}</HelpBlock>}
+    {help &&
+      <div>
+        <FormControl.Feedback />
+        <HelpBlock>{help}</HelpBlock>
+      </div>}
   </FormGroup>
 );
 

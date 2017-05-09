@@ -12,7 +12,8 @@ class LoginContainer extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      errorMessage: ""
     };
   }
 
@@ -38,19 +39,22 @@ class LoginContainer extends Component {
         handlePasswordChange={this.handlePasswordChange}
         emailValue={this.state.email}
         passwordValue={this.state.password}
+        errorMessage={this.state.errorMessage}
       />
     );
   }
 
   getEmailValidationState = () => {
+    if (this.state.errorMessage) return "error";
     const length = this.state.email.length;
     if (length > 8) return "success";
     else if (length > 0) return "error";
   };
 
   getPasswordValidationState = () => {
+    if (this.state.errorMessage) return "error";
     const length = this.state.password.length;
-    if (length > 6) return "success";
+    if (length > 3) return "success";
     else if (length > 0) return "error";
   };
 
@@ -79,8 +83,14 @@ class LoginContainer extends Component {
         }
       })
       .then(({ data }) => {
-        localStorage.setItem("jwt_token", data.login.jwtToken);
-        browserHistory.push("/");
+        const { login } = data;
+        if (login.error) {
+          this.setState({ errorMessage: login.error });
+        } else {
+          const { user } = login;
+          localStorage.setItem("jwt_token", user.jwtToken);
+          browserHistory.push("/");
+        }
       });
   };
 }
@@ -93,8 +103,11 @@ export default graphql(
   gql`
     mutation login($email: String!, $password: String!) {
       login(email: $email, password: $password) {
-        jwtToken
-        email
+        user {
+          jwtToken
+          email
+        }
+        error
       }
     }
   `

@@ -1,6 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, FormGroup, Checkbox } from "react-bootstrap";
+import {
+  Button,
+  FormGroup,
+  Checkbox,
+  FormControl,
+  HelpBlock
+} from "react-bootstrap";
 
 import FieldGroup from "components/core/FieldGroup";
 
@@ -11,7 +17,8 @@ const Login = ({
   getPasswordValidationState,
   handlePasswordChange,
   emailValue,
-  passwordValue
+  passwordValue,
+  errorMessage
 }) => (
   <form className="form-signin" onSubmit={handleSubmit}>
     <h2 className="form-signin-heading">Please sign in</h2>
@@ -36,7 +43,8 @@ const Login = ({
       value={passwordValue}
       onChange={handlePasswordChange}
     />
-    <FormGroup>
+    <FormGroup validationState={errorMessage ? "error" : null}>
+      <HelpBlock>{errorMessage}</HelpBlock>
       <Checkbox>Remember me</Checkbox>
     </FormGroup>
     <Button bsStyle="primary" bsSize="large" block type="submit">
@@ -52,7 +60,8 @@ Login.propTypes = {
   getPasswordValidationState: PropTypes.func.isRequired,
   handlePasswordChange: PropTypes.func.isRequired,
   emailValue: PropTypes.string.isRequired,
-  passwordValue: PropTypes.string.isRequired
+  passwordValue: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string
 };
 
 export default Login;

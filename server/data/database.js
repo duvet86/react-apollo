@@ -55,8 +55,16 @@ export function login(email, password) {
 
     loggedUser = new User(1, email, password, jwtToken);
 
-    return loggedUser;
+    return {
+      user: loggedUser,
+      error: null
+    };
   }
+
+  return {
+    user: null,
+    error: "Username or password invalid."
+  };
 }
 
 export function getJwtToken() {

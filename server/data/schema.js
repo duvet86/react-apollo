@@ -24,6 +24,11 @@ const typeDefs = `
     jwtToken: String
   }
 
+  type UserResponse {
+    user: User,
+    error: String
+  }
+
   type Query {
     channels: [Channel]
     getJwtToken: String
@@ -32,7 +37,7 @@ const typeDefs = `
   type Mutation {
     addChannel(name: String!): Channel
     removeChannel(id: ID!): Result
-    login(email: String! password: String!): User
+    login(email: String! password: String!): UserResponse
     logout(jwtToken: String!): Result
   }
 
