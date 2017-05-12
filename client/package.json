@@ -23,12 +23,22 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "eslint-plugin-graphql": "^0.8.0",
+<<<<<<< HEAD:client/package.json
     "prop-types": "^15.5.8",
     "react-apollo": "^1.1.0",
     "react-scripts": "0.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
+=======
+    "react-apollo": "^1.1.0",
+    "react-scripts": "0.9.5",
+    "subscriptions-transport-ws": "^0.6.0",
+    "prop-types": "^15.5.8"
+  },
+  "scripts": {
+    "start-client": "react-scripts start",
+>>>>>>> 90a1723461b874bc40198e307bf7921d199b4782:client/package.json
     "build": "react-scripts build",
     "update-schema": "babel-node ./scripts/updateSchema.js",
     "test": "react-scripts test --env=jsdom",
