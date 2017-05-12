@@ -10,29 +10,18 @@ RUN yarn global add nodemon
 
 # Prepare app directory
 RUN mkdir -p /usr/src/app
-ADD ../../ /usr/src/app
+ADD . /usr/src/app
 
 # Any commands start from this directory IN the container
 WORKDIR /usr/src/app
 
-
-
-FROM node:0.12
-MAINTAINER tribou
-
-# Prepare app directory
-RUN mkdir -p /usr/src/app
-ADD . /usr/src/app
-
-# Install dependencies
-WORKDIR /usr/src/app
-RUN npm install
+RUN yarn
 
 # Build the app
-RUN npm build
+RUN yarn build
 
 # Expose the app port
-EXPOSE 8000
+EXPOSE 3000
 
 # Start the app
-CMD npm start
+CMD yarn start

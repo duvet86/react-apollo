@@ -29,9 +29,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "react-apollo": "^1.1.0",
-    "react-scripts": "0.9.5",
-    "subscriptions-transport-ws": "^0.6.0",
-    "prop-types": "^15.5.8"
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
