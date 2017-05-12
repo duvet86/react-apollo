@@ -8,12 +8,14 @@ import Logout from "components/logout/Logout";
 const LogoutContainer = ({ mutate }) => {
   const handleLogout = () => {
     const jwtToken = localStorage.getItem("jwt_token");
+    console.log(jwtToken);
     mutate({
       variables: { jwtToken }
     }).then(res => {
       localStorage.removeItem("jwt_token");
       browserHistory.push("/login");
-    });
+    })
+    .catch(err => console.log(err));
   };
 
   return <Logout handleClick={handleLogout} />;
