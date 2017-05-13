@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
-import { pubsub } from "./subscriptionManager";
+import {
+  pubsub
+} from "./subscriptionManager";
 
 let loggedUser = null;
 
@@ -45,8 +47,7 @@ export function removeChannel(id) {
 
 export function login(email, password) {
   if (email === "luca@gmail.com" && password === "luca") {
-    const jwtToken = jwt.sign(
-      {
+    const jwtToken = jwt.sign({
         email,
         password
       },

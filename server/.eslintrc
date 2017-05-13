@@ -1,28 +1,19 @@
 {
-    "extends": "react-app",
+    "extends": "eslint:recommended",
     "parser": "babel-eslint",
     "env": {
-        "browser": true,
         "node": true
     },
     "parserOptions": {
         "ecmaVersion": 6,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true
-        }
+        "sourceType": "module"
     },
     "plugins": [
-        "react",
         "graphql"
     ],
     "rules": {
         "no-var": "error",
         "semi": [
-            "error",
-            "always"
-        ],
-        "eol-last": [
             "error",
             "always"
         ],
